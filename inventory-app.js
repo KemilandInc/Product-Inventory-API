@@ -5,8 +5,8 @@ app.use(express.json()); // Parse JSON request bodies
 
 // In-memory 'database' (array of objects)
 let products = [
-    { id: 1, item: 'Laptop', stock: 90 },
-    { id: 2, item: 'Mouse', stock: 77 }
+    { id: 1, item: 'Plywood', stock: 90 },
+    { id: 2, item: 'Hammer', stock: 77 }
 ];
 
 // Helper function to find a product by ID
