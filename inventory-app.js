@@ -13,5 +13,5 @@ let products = [
 const findProductById = (id) => products.find(p => p.id === parseInt(id));
 
 // ROUTES 
-// These are the API interaction points that your group members will complete the logic for.
+// These are the API interaction points that you guys will complete the logic for.
 // Continue with CRUD operations for the inventory management system.
