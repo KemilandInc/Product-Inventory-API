@@ -15,3 +15,18 @@ const findProductById = (id) => products.find(p => p.id === parseInt(id));
 // ROUTES 
 // These are the API interaction points that you guys will complete the logic for.
 // Continue with CRUD operations for the inventory management system.
+
+
+// DELETE A PRODUCT BY ID
+app.delete('/products/:id', (req, res) => {
+    const productId = parseInt(req.params.id);
+    const index = products.findIndex(p => p.id === productId);
+
+    if (index === -1) {
+        return res.status(404).json({ error: 'Product not found' });
+    }
+
+    products.splice(index, 1);
+
+    res.json({ message: 'Product deleted successfully' });
+});
