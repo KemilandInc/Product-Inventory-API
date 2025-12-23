@@ -74,6 +74,15 @@ app.patch("/products/:id", (req, res) => {
     return res.status(400).json({error: "Please enter valid values for the stock"})
 })
 
+//Route to remove a particular item
+app.delete("/products/:id", (req, res) => {
+  const product = products.find(p => p.id === Number.parseInt(req.params.id))
+  const newProducts = products.filter(p => p.id !== product.id)
+  if(newProducts.length === products.length) return res.status(404).json({error: "Product removal unsuccessful :("})
+  products = newProducts
+  res.status(204).send()
+})
+
 
 app.listen(PORT, () => {
     console.log(`App is running on http://localhost:${PORT}`)
