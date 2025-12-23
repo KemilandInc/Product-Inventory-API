@@ -4,19 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 3000
 app.use(express.json()); // Parse JSON request bodies
 
-// In-memory 'database' (array of objects)
-let products = [
-    { id: 1, item: 'Plywood', stock: 90 },
-    { id: 2, item: 'Hammer', stock: 77 }
-];
-
-// Helper function to find a product by ID
-const findProductById = (id) => products.find(p => p.id === Number.parseInt(id));
-
-// ROUTES 
-// These are the API interaction points that you guys will complete the logic for.
-// Continue with CRUD operations for the inventory management system.
-
 //Route to list the items out of stock
 app.get("/products/nostock", (req, res) => {
     const noStock = products.filter(p => p.stock === 0)
