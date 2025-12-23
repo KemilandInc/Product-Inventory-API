@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 const app = express();
 
@@ -33,3 +34,6 @@ app.get("/products/:id", (req, res) => {
   res.json(product);
 });
 
+app.listen(PORT, () => {
+    console.log(`App is running on http://localhost:${PORT}`)
+})
