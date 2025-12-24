@@ -30,6 +30,12 @@ app.get("/products/instock", (req, res) => {
   res.json(inStockProducts);
 });
 
+//Route to list the items out of stock
+app.get("/products/nostock", (req, res) => {
+    const noStock = products.filter(p => p.stock === 0)
+    res.status(200).json(noStock)
+})
+
 // (Task 4)
 app.get("/products/:id", (req, res) => {
   // const id = Number(req.params.id); Converted to number which is parsedInt below
