@@ -83,6 +83,7 @@ app.patch("/products/:id", (req, res) => {
 })
 
 //Route to remove a particular item
+//Delete an unwanted product or products
 app.delete("/products/:id", (req, res) => {
   const product = products.find(p => p.id === Number.parseInt(req.params.id))
   const newProducts = products.filter(p => p.id !== product.id)
