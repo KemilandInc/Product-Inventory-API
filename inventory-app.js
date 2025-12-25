@@ -1,9 +1,11 @@
+//
 require("dotenv").config()
 const express = require("express");
 const app = express();
 
+
 const PORT = process.env.PORT || 3000;
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json()); // Parse JSON request bodies. The Middleware is express.json
 
 // In-memory 'database' (array of objects)
 // (Task 2)
@@ -89,7 +91,7 @@ app.delete("/products/:id", (req, res) => {
   res.status(204).send()
 })
 
-
+// The port key can be found in the .env file
 app.listen(PORT, () => {
     console.log(`App is running on http://localhost:${PORT}`)
 })
