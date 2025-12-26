@@ -56,17 +56,17 @@ app.get("/products/:id", (req, res) => {
 //Route to list the items out of stock (Task 6)
 app.get("/products/nostock", (req, res) => {
     const noStock = products.filter(p => p.stock === 0)
-    res.status(200).json(noStock)
+    res.status(200).json(noStock)  //200 All good
 })
 
 //Route to add a new item and stock number (Task 7)
 app.post("/products", (req, res) => {
     const newItem = {id: products.length + 1, item: req.body.item, stock: req.body.stock}
-    if(!req.body.item || !req.body.stock || req.body.stock < 0){
-        return res.status(400).json({error: "Please make sure that both item and stock are present"})
+    if(!req.body.item || !req.body.stock || req.body.stock < 0){  // from json body
+        return res.status(400).json({error: "Please make sure that both item and stock are present"})  
     }
     products.push(newItem)
-    res.status(201).send("New item added successfully!")
+    res.status(201).send("New item added successfully!") // 201 created
 })
 
 //Route to edit the number of items in stock (Task 7)
@@ -86,8 +86,8 @@ app.patch("/products/:id", (req, res) => {
 //Delete an unwanted product or products
 app.delete("/products/:id", (req, res) => {
   const product = products.find(p => p.id === Number.parseInt(req.params.id))
-  const newProducts = products.filter(p => p.id !== product.id)
-  if(newProducts.length === products.length) return res.status(404).json({error: "Product removal unsuccessful :("})
+  const newProducts = products.filter(p => p.id !== product.id) //remove by index
+  if(newProducts.length === products.length) return res.status(404).json({error: "Product removal unsuccessful :("}) //eror 204 no content (Gone!)
   products = newProducts
   res.status(204).send()
 })
