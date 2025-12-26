@@ -87,7 +87,7 @@ app.patch("/products/:id", (req, res) => {
 app.delete("/products/:id", (req, res) => {
   const product = products.find(p => p.id === Number.parseInt(req.params.id))
   const newProducts = products.filter(p => p.id !== product.id) //remove by index
-  if(newProducts.length === products.length) return res.status(404).json({error: "Product removal unsuccessful :("}) //eror 404 not found
+  if(newProducts.length === products.length) return res.status(404).json({error: "Product removal unsuccessful :("}) //eror 204 no content (Gone!)
   products = newProducts
   res.status(204).send()
 })
