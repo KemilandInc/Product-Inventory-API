@@ -21,7 +21,7 @@ const findProductById = (id) => products.find(p => p.id === Number.parseInt(id))
 // These are the API interaction points that you guys will complete the logic for.
 // Continue with CRUD operations for the inventory management system.
 
-//(Task 3)
+//Route to list all the items(Task 3)
 app.get("/products", (req, res) => {
   res.json(products);
 });
@@ -32,13 +32,13 @@ app.get("/products/instock", (req, res) => {
   res.json(inStockProducts);
 });
 
-//Route to list the items out of stock
+//Route to list the items out of stock (Task 6)
 app.get("/products/nostock", (req, res) => {
     const noStock = products.filter(p => p.stock === 0)
-    res.status(200).json(noStock)
+    res.status(200).json(noStock)  //200 All good
 })
 
-// (Task 4)
+// Route to get a particular item by id (Task 4)
 app.get("/products/:id", (req, res) => {
   // const id = Number(req.params.id); Converted to number which is parsedInt below
   // const product = products.find((i) => i.id === id); finding product by id
@@ -53,12 +53,6 @@ app.get("/products/:id", (req, res) => {
   res.json(product);
 });
 
-//Route to list the items out of stock (Task 6)
-app.get("/products/nostock", (req, res) => {
-    const noStock = products.filter(p => p.stock === 0)
-    res.status(200).json(noStock)  //200 All good
-})
-
 //Route to add a new item and stock number (Task 7)
 app.post("/products", (req, res) => {
     const newItem = {id: products.length + 1, item: req.body.item, stock: req.body.stock}
@@ -69,7 +63,7 @@ app.post("/products", (req, res) => {
     res.status(201).send("New item added successfully!") // 201 created
 })
 
-//Route to edit the number of items in stock (Task 7)
+//Route to edit the number of items in stock (Task 8)
 app.patch("/products/:id", (req, res) => {
     const product = products.find(p => p.id === Number.parseInt(req.params.id))
     if(!product){
